@@ -1,0 +1,3 @@
+woocommerce
+keyring
+connect-shopify-and-woocommerce

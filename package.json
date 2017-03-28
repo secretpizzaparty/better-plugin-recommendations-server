@@ -1,0 +1,15 @@
+{
+  "name": "better-plugin-recommendations-server",
+  "version": "1.0.0",
+  "description": "The Server that powers Better Plugin Recommendations for WordPress",
+  "main": "index.js",
+  "repository": "git@github.com:sparkdevio/better-plugin-recommendations-server.git",
+  "author": "Joey Kudish <joey@jkudish.com>",
+  "license": "GPLv2",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "hapi": "^16.1.0"
+  }
+}
