@@ -10,6 +10,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "hapi": "^16.1.0"
+    "async": "^2.2.0",
+    "axios": "^0.15.3",
+    "hapi": "^16.1.0",
+    "jfile": "^1.1.12"
   }
 }
