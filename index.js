@@ -1,4 +1,7 @@
 const Hapi = require('hapi');
+const JFile = require('jfile');
+const async = require('async');
+const axios = require('axios');
 
 const server = new Hapi.Server();
 server.connection({
@@ -18,8 +21,27 @@ server.route({
     method: 'GET',
     path:'/api/plugin-recommendations',
     handler: function (request, reply) {
-        
-        return reply('hello world');
+        const pluginsFile = new JFile( __dirname + '/plugins.txt' );
+        const plugins = pluginsFile.lines;
+        const numberOfPlugins = plugins.length;
+        return async.map(
+            plugins,
+            (plugin, cb) => {
+                axios.get( 'https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json' ).then(res => {
+                    cb(null, res.data);
+                });
+            },
+            ( err, results ) => {
+                return reply({
+                    info: {
+                        page: 1,
+                        pages: 1,
+                        results: numberOfPlugins,
+                    },
+                    plugins: results
+                });
+            }
+        );
     }
 });
 
