@@ -27,7 +27,7 @@ server.route({
         return async.map(
             plugins,
             (plugin, cb) => {
-                axios.get( 'https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons' ).then(res => {
+                axios.get( 'https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons,active_installs' ).then(res => {
                     cb(null, res.data);
                 });
             },
