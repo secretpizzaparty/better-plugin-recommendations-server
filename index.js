@@ -1,7 +1,7 @@
 const Hapi = require('hapi');
 const JFile = require('jfile');
 const async = require('async');
-const axios = require('axios');
+const fetchPluginData = require('./fetch-plugin-data');
 
 const server = new Hapi.Server();
 server.connection({
@@ -26,11 +26,7 @@ server.route({
         const numberOfPlugins = plugins.length;
         return async.map(
             plugins,
-            (plugin, cb) => {
-                axios.get( 'https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons,active_installs' ).then(res => {
-                    cb(null, res.data);
-                });
-            },
+            fetchPluginData,
             ( err, results ) => {
                 return reply({
                     info: {
