@@ -2,7 +2,6 @@ wordpress-seo
 ninja-forms
 google-analytics-dashboard-for-wp
 minimal-coming-soon-maintenance-mode
-wordfence
 foogallery
 the-events-calendar
 tinymce-advanced
