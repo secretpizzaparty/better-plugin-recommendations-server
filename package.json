@@ -4,8 +4,8 @@
   "description": "The Server that powers Better Plugin Recommendations for WordPress",
   "main": "index.js",
   "repository": "git@github.com:sparkdevio/better-plugin-recommendations-server.git",
-  "author": "Joey Kudish <joey@jkudish.com>",
-  "license": "GPLv2",
+  "author": "Joey Kudish <contact@sparkdev.io>",
+  "license": "GPL-2.0",
   "scripts": {
     "start": "node index.js"
   },
@@ -14,6 +14,7 @@
     "axios": "^0.15.3",
     "hapi": "^16.1.0",
     "jfile": "^1.1.12",
+    "lodash": "^4.17.4",
     "memory-cache": "^0.1.6"
   }
 }
