@@ -14,7 +14,7 @@ server.route({
     method: 'GET',
     path:'/',
     handler: function (request, reply) {
-        return reply('Sup?');
+        return reply.redirect('https://github.com/secretpizzaparty/better-plugin-recommendations-server');
     }
 });
 
