@@ -10,7 +10,7 @@ module.exports = (plugin, cb) => {
         return cb(null, plugin_data);
     }
 
-    axios.get('https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons,active_installs').then(res => {
+    axios.get('https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons,active_installs,short_description').then(res => {
         plugin_data = res.data;
         cache.put(cache_key, plugin_data, cache_expiry);
         return cb(null, plugin_data);
