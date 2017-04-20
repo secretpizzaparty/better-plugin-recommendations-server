@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const JFile = require('jfile');
 const async = require('async');
+const filter = require('lodash').filter;
 const fetchPluginData = require('./fetch-plugin-data');
 
 const server = new Hapi.Server();
@@ -22,19 +23,19 @@ server.route({
     path:'/api/plugin-recommendations',
     handler: function (request, reply) {
         const pluginsFile = new JFile( __dirname + '/plugins.txt' );
-        const plugins = pluginsFile.lines;
-        const numberOfPlugins = plugins.length;
+        const pluginsToFetch = filter( pluginsFile.lines );
         return async.map(
-            plugins,
+            pluginsToFetch,
             fetchPluginData,
             ( err, results ) => {
+                const plugins = filter(results);
                 return reply({
                     info: {
                         page: 1,
                         pages: 1,
-                        results: numberOfPlugins,
+                        results: plugins.length,
                     },
-                    plugins: results
+                    plugins
                 });
             }
         );
